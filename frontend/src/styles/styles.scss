@@ -1,0 +1,19 @@
+// Setup
+@import "setup/variables.scss";
+@import "setup/functions.scss";
+@import "setup/mixins.scss";
+@import "setup/typography.scss";
+
+// Basics
+@import "basics/helpers.scss";
+@import "basics/layout.scss";
+@import "basics/base.scss";
+@import "basics/buttons.scss";
+
+// Components
+@import "components/header.scss";
+@import "components/home.scss";
+@import "components/toy_app.scss";
+@import "components/toy_details.scss";
+@import "components/toy_preview.scss";
+@import "components/edit_toy.scss";

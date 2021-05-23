@@ -1,0 +1,6 @@
+.add-form {
+    margin-bottom: 10px;
+    > *:not(:last-child) {
+        margin-inline-end: rem(10px);
+    }
+}

@@ -1,0 +1,47 @@
+[
+    {
+        "_id": "Admin",
+        "fullname": "Admin",
+        "email": "Admin@test.test",
+        "password": "Admin",
+        "isAdmin": true,
+        "updatedAt": 1620917015437,
+        "createdAt": 1620917015437
+    },
+    {
+        "_id": "9VuUu",
+        "fullname": "mark",
+        "email": "mark@test.test",
+        "password": "password",
+        "isAdmin": false,
+        "updatedAt": 1620917015437,
+        "createdAt": 1620917015437
+    },
+    {
+        "_id": "HIjWP",
+        "fullname": "ela",
+        "email": "ela@test.test",
+        "password": "password",
+        "isAdmin": false,
+        "updatedAt": 1620916918375,
+        "createdAt": 1620916918375
+    },
+    {
+        "_id": "bUY3o",
+        "fullname": "buffy",
+        "email": "buffy@test.test",
+        "password": "password",
+        "isAdmin": false,
+        "updatedAt": 1620916636685,
+        "createdAt": 1620916636685
+    },
+    {
+        "_id": "wnD0S",
+        "fullname": "ilai",
+        "email": "jovanni@test.test",
+        "password": "password",
+        "isAdmin": false,
+        "updatedAt": 1620912738621,
+        "createdAt": 1620912738621
+    }
+]
