@@ -1,6 +1,7 @@
-import axios from 'axios'
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/toy' : 'http://localhost:3030/api/toy'
+import { httpService } from './http.service'
+
+// const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/toy' : 'http://localhost:3030/api/toy'
 
 export const toyService = {
     query,
@@ -10,27 +11,22 @@ export const toyService = {
 }
 
 function query(filterBy) {
-    return axios.get(`${BASE_URL}?txt=${filterBy.txt}&inStock=${filterBy.inStock}`)
-        .then(res => res.data)
+    return httpService.get(`toy`, filterBy)
 }
 
 function getById(toyId) {
-    return axios.get(`${BASE_URL}/${toyId}`)
-        .then(res => res.data)
+    return httpService.get(`toy/${toyId}`)
 }
 
 function save(toy) {
     if (toy._id) {
-        return axios.put(BASE_URL, toy)
-            .then(res => res.data)
+        return httpService.put('toy', toy)
     } else {
-        return axios.post(BASE_URL, toy)
-            .then(res => res.data)
+        return httpService.post('toy', toy)
     }
 }
 
-function removeToy(toyId, loggedinUser) {
-    return axios.delete(`${BASE_URL}/${toyId}`, loggedinUser)
-        .then(res => res.data)
+function removeToy(toyId, /* loggedinUser */) {
+    return httpService.delete(`toy/${toyId}`)
 }
 

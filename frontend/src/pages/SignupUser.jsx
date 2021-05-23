@@ -28,12 +28,14 @@ function _SignupUser({ signupUser, history }) {
         }
         return errors;
     };
-    const onSubmit = (values, { setSubmitting }) => {
-        signupUser(values)
-            .then(() => {
-                setSubmitting(false);
-                history.push('/toy')
-            })
+    const onSubmit = async (values, { setSubmitting }) => {
+        try {
+            await signupUser(values)
+            setSubmitting(false);
+            history.push('/toy')
+        } catch (err) {
+            throw err
+        }
     };
 
     const TextFieldOutlined = (props) => (

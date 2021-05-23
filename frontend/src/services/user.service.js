@@ -1,6 +1,6 @@
-import axios from 'axios'
+import { httpService } from './http.service'
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/user' : 'http://localhost:3030/api/user'
+// const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/user' : 'http://localhost:3030/api/user'
 
 export const userService = {
     login,
@@ -9,16 +9,13 @@ export const userService = {
 }
 
 function login(credentials) {
-    return axios.post(`${BASE_URL}/login`, { credentials })
-        .then(res => res.data)
+    return httpService.post('user/login', credentials)
 }
 
 function logout() {
-    return axios.post(`${BASE_URL}/logout`)
-        .then(res => res.data)
+    return httpService.post('user/logout')
 }
 
 function signupUser(user) {
-    return axios.post(`${BASE_URL}/signup`, { user })
-        .then(res => res.data)
+    return httpService.post('user/signup', user)
 }

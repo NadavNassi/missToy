@@ -27,12 +27,14 @@ export function _LoginUser({ loginUser, history }) {
         }
         return errors;
     };
-    const onSubmit = (values, { setSubmitting }) => {
-        loginUser(values)
-            .then(() => {
-                setSubmitting(false);
-                history.push('/toy')
-            })
+    const onSubmit = async (values, { setSubmitting }) => {
+        try {
+            await loginUser(values)
+            setSubmitting(false);
+            history.push('/toy')
+        } catch (err) {
+            throw err
+        }
     };
     const TextFieldOutlined = (props) => (
         <TextField

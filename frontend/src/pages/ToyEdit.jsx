@@ -60,7 +60,6 @@ class _ToyEdit extends Component {
 
     render() {
         const { toy } = this.state
-        console.log("🚀 ~ file: ToyEdit.jsx ~ line 63 ~ _ToyEdit ~ render ~ toy", toy)
         if (!toy) return <div>Loading...</div>
         const { name, price, type, inStock } = toy
         return (

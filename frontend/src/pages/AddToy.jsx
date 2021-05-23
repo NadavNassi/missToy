@@ -30,14 +30,16 @@ class _AddToy extends Component {
         }))
     }
 
-    onSubmitForm = (ev) => {
+    onSubmitForm = async (ev) => {
         ev.preventDefault()
         const newToy = { ...this.state.newToy }
         newToy.inStock = true
-        this.props.addToy(newToy)
-            .then(() => {
-                this.props.history.push('/toy')
-            })
+        try {
+            await this.props.addToy(newToy)
+            this.props.history.push('/toy')
+        } catch (err) {
+            throw err
+        }
     }
 
     render() {

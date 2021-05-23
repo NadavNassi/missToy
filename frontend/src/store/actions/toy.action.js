@@ -2,57 +2,46 @@ import { toyService } from '../../services/toy.service.js'
 
 
 export function loadToys(filterBy = { txt: '', inStock: 'all' }) {
-    return dispatch => {
-        return toyService.query(filterBy)
-            .then(toys => {
-                if (!toys) {
-
-                }
-                const action = {
-                    type: 'SET_TOYS',
-                    toys
-                }
-                dispatch(action)
-            })
+    return async dispatch => {
+        try {
+            const toys = await toyService.query(filterBy)
+            dispatch({ type: 'SET_TOYS', toys })
+        } catch (err) {
+            throw err
+        }
     }
 }
 
-export function addToy(toy) {
-    return dispatch => {
-        return toyService.save(toy)
-            .then(toy => {
-                const action = {
-                    type: 'ADD_TOY',
-                    toy
-                }
-                dispatch(action)
-            })
+export function addToy(toyToAdd) {
+    return async dispatch => {
+        try {
+            const toy = await toyService.save(toyToAdd)
+            dispatch({ type: 'ADD_TOY', toy })
+        } catch (err) {
+            throw err
+        }
     }
 }
 
-export function updateToy(toy) {
-    return dispatch => {
-        return toyService.save(toy)
-            .then(toy => {
-                const action = {
-                    type: 'UPDATE_TOY',
-                    toy
-                }
-                dispatch(action)
-            })
+export function updateToy(toyToUpdate) {
+    return async dispatch => {
+        try {
+            const toy = await toyService.save(toyToUpdate)
+            dispatch({ type: 'UPDATE_TOY', toy })
+        } catch (err) {
+            throw err
+        }
     }
 }
 
 export function remove(toyId) {
-    return dispatch => {
-        return toyService.removeToy(toyId)
-            .then(() => {
-                const action = {
-                    type: 'REMOVE_TOY',
-                    toyId
-                }
-                dispatch(action)
-            })
+    return async dispatch => {
+        try {
+            await toyService.removeToy(toyId)
+            dispatch({ type: 'REMOVE_TOY', toyId })
+        } catch (err) {
+            throw err
+        }
     }
 }
 

@@ -14,13 +14,15 @@ class _TodoDetails extends Component {
     state = {
         toy: null,
     }
-    componentDidMount() {
+    async componentDidMount() {
         // this.props.loadUser()
         const { toyId } = this.props.match.params
-        toyService.getById(toyId)
-            .then(toy => {
-                this.setState({ toy })
-            })
+        try {
+            const toy = await toyService.getById(toyId)
+            this.setState({ toy })
+        } catch (err) {
+            throw err
+        }
     }
 
     componentWillUnmount() {
@@ -32,11 +34,15 @@ class _TodoDetails extends Component {
         return `${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
     }
 
-    onRemove = () => {
+    onRemove = async () => {
         const toyId = this.state.toy._id
         const { user } = this.props
-        this.props.remove(toyId, user)
-            .then(() => this.props.history.push('/toy'))
+        try {
+            await this.props.remove(toyId, user)
+            this.props.history.push('/toy')
+        } catch (err) {
+            throw err
+        }
     }
 
 
@@ -44,7 +50,7 @@ class _TodoDetails extends Component {
         const { user } = this.props
         const { toy } = this.state
         if (!toy) return <div>Loading...</div>
-        const btns = [<Button><Link to={`/toy/edit/${toy._id}`}>Edit toy</Link></Button>, <Button onClick={this.onRemove}>Delete toy</Button>]
+        const btns = [<Button key='edit-btn'><Link to={`/toy/edit/${toy._id}`}>Edit toy</Link></Button>, <Button key='delete-btn' onClick={this.onRemove}>Delete toy</Button>]
         return (
             <section className="toy-details">
                 <div className="toy-description">
