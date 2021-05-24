@@ -48,8 +48,8 @@ app.use('/api/user', authRoutes)
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
-
+const logger = require('./services/logger.service')
 const port = process.env.PORT || 3030
 app.listen(port,
-    () => console.log('Server listening on port 3030')
+    () => logger.info('Server is running on port: ' + port)
 )

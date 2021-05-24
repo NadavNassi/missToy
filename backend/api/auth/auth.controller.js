@@ -7,6 +7,7 @@ async function login(req, res) {
         req.session.user = user
         res.json(user)
     } catch (err) {
+        logger.error('Failed to Login ' + err)
         res.status(401).send({ err: 'Failed to Login' })
     }
 }
@@ -28,6 +29,7 @@ async function signup(req, res) {
         req.session.loggedinUser = user
         res.json(user)
     } catch (err) {
+        logger.error('Failed to signup ' + err)
         throw err
     }
 

@@ -1,0 +1,5 @@
+5/24/2021, 10:44:46 AM - INFO - Server is running on port: 3030 
+5/24/2021, 10:47:12 AM - INFO - Server is running on port: 3030 
+5/24/2021, 10:58:37 AM - INFO - Server is running on port: 3030 
+5/24/2021, 10:58:52 AM - ERROR - Failed to get toys | ReferenceError: toysService is not defined 
+5/24/2021, 10:59:16 AM - INFO - Server is running on port: 3030 

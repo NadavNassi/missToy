@@ -1,5 +1,6 @@
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectID
+const logger = require('../../services/logger.service')
 
 
 
@@ -11,6 +12,7 @@ async function query(filterBy) {
         let toys = await collection.find(criteria).toArray()
         return toys
     } catch (err) {
+        logger.error('Failed to get toys', err)
         throw err
     }
 }
@@ -21,6 +23,7 @@ async function getById(toyId) {
         const toy = await collection.findOne({ '_id': ObjectId(toyId) })
         return toy
     } catch (err) {
+        logger.error('Failed to get toy', err)
         throw err
     }
 }
@@ -34,6 +37,7 @@ async function createToy(toy) {
         await collection.insertOne(toy)
         return toy
     } catch (err) {
+        logger.error('Failed to create toy', err)
         throw err
     }
 }
@@ -46,6 +50,7 @@ async function updateToy(toy) {
         await collection.updateOne({ '_id': ObjectId(_id) }, { $set: { ...toy, _id: ObjectId(_id) } })
         return toy;
     } catch (err) {
+        logger.error('Failed to update toy', err)
         throw err
     }
 }
@@ -56,12 +61,9 @@ async function remove(toyId) {
         const collection = await dbService.getCollection('toyDB')
         await collection.deleteOne({ '_id': ObjectId(toyId) })
     } catch (err) {
+        logger.error('Failed to remove toy', err)
         throw err
     }
-    //     const idx = gToys.findIndex(currToy => currToy._id === toyId)
-    //     if (idx === -1) return Promise.reject('No such Toy')
-    //     gToys.splice(idx, 1)
-    //     return utilService.saveToysToFile(gToys, 'toy')
 }
 
 

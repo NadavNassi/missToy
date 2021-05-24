@@ -3,8 +3,10 @@ Ex2-React-Advanced.pdf
 
 node_modules
 
+
 # dependencies
 /node_modules
+/logs
 /.pnp
 .pnp.js
 
